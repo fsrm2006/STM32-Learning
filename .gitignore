@@ -1,0 +1,27 @@
+# Keil MDK 编译生成文件
+*.uvopt
+*.uvoptx
+*.bak
+*.dep
+*.o
+*.d
+*.axf
+*.hex
+*.bin
+*.elf
+*.map
+*.scr
+*.crf
+*.lst
+*.sct
+*.lnp
+*.htm
+*.tra
+# 编译输出文件夹
+Objects/
+Listings/
+RTE/
+# 系统缓存
+.DS_Store
+__history/
+*.i
