@@ -1,0 +1,6 @@
+# 1. 检测所有新增/修改文件（.gitignore自动过滤Keil垃圾文件）
+git add .
+# 2. 填写提交备注，写清楚新增了什么项目
+git commit -m "新增工程：TIM定时器中断实验"
+# 3. 推送到GitHub远程
+git push origin master
