@@ -33,23 +33,3 @@ void MyDMA_Init(uint32_t Dataptr, uint32_t Desptr, uint16_t Size)
 	DMA_Cmd(DMA1_Channel1, ENABLE);				//使能DMA通道，此时等待触发信号
 }
 
-
-void MyDMA_Transfer(void)		//启动一次DMA内存拷贝，并等待搬运完成
-{
-	/*
-	DMA工作三大硬件条件（同时满足才会搬运）：
-	1. DMA通道使能打开
-	2. 传输计数器NDTR > 0
-	3. 收到有效的触发信号(M2M模式内部自动产生触发)
-	额外前提：RCC DMA时钟已经开启
-	普通模式搬运完成之后，NDTR会变成0，不会自动恢复，需要软件重新赋值
-	*/
-
-	DMA_Cmd(DMA1_Channel1, DISABLE);					//重要：修改NDTR计数器前必须先关闭DMA通道
-	DMA_SetCurrDataCounter(DMA1_Channel1, size);		//重新设置本次要搬运的数据个数，给NDTR寄存器赋值
-	DMA_Cmd(DMA1_Channel1, ENABLE);						//重新打开DMA通道，满足使能条件，内部自动产生触发开始搬运
-
-	while(DMA_GetFlagStatus(DMA1_FLAG_TC1) == RESET);	//轮询等待传输完成；搬运全部结束后硬件自动把TC1标志置SET
-
-	DMA_ClearFlag(DMA1_FLAG_TC1);						//硬件TC标志置SET后不会自动清零，软件手动清除，为下一次传输做好准备
-}

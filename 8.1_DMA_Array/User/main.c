@@ -12,18 +12,6 @@ int main(){
 	OLED_ShowString(3,1,"DataB:");
 	OLED_ShowHexNum(1,7,(uint32_t)DataA,8);
 	OLED_ShowHexNum(3,7,(uint32_t)DataB ,8);
-//	for (int i = 0; i < 4; i++){
-//		OLED_ShowHexNum(1,i * 3 + 1,DataA[i], 2);
-//		OLED_ShowHexNum(2,i * 3 + 1,DataB[i], 2);
-//	}//转运前
-//	
-
-//	
-//	for (int i = 0; i < 4; i++){
-//		OLED_ShowHexNum(3,i * 3 + 1,DataA[i], 2);
-//		OLED_ShowHexNum(4,i * 3 + 1,DataB[i], 2);
-//	}//转运后
-	
 
 	while(1)
 	{
