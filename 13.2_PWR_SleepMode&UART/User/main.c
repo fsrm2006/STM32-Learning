@@ -25,6 +25,7 @@ OLED_Init();
 		OLED_ShowString(2, 1, "       ");
 		Delay_ms(200);
 		
+		__WFI();
 	}
 
 	return 0;

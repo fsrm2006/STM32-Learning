@@ -10,10 +10,10 @@ int main(){
 	// 配置初始时间（北京时间）
 	time_set.tm_year = 2026;	// 年份：实际值，设置函数内部会自动减1900适配mktime格式
 	time_set.tm_mon = 10;		// 月份：1~12，设置函数内部会自动减1适配mktime格式（0~11）
-	time_set.tm_mday = 6;		// 日期
-	time_set.tm_hour = 16;		// 时
-	time_set.tm_min = 35;		// 分
-	time_set.tm_sec = 25;		// 秒
+	time_set.tm_mday = 16;		// 日期
+	time_set.tm_hour = 19;		// 时
+	time_set.tm_min = 47;		// 分
+	time_set.tm_sec = 35;		// 秒
 	
 	// 外设初始化
 	OLED_Init();

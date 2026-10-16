@@ -700,16 +700,6 @@
               <FilePath>.\Hardware\IC.h</FilePath>
             </File>
             <File>
-              <FileName>InfradeSensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\InfradeSensor.c</FilePath>
-            </File>
-            <File>
-              <FileName>InfradeSensor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\InfradeSensor.h</FilePath>
-            </File>
-            <File>
               <FileName>Key.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\Key.c</FilePath>
@@ -873,6 +863,16 @@
               <FileName>BKP.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\BKP.h</FilePath>
+            </File>
+            <File>
+              <FileName>InfradeSensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\8.1_DMA_ADC\Hardware\InfradeSensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>InfradeSensor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\8.1_DMA_ADC\Hardware\InfradeSensor.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -24,7 +24,7 @@ void IS_Init(){
 	EXTI_InitStruct.EXTI_Line = EXTI_Line14; 	//PB14端口和EXTI14通道绑定
 	EXTI_InitStruct.EXTI_LineCmd = ENABLE;		//启用中断
 	EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;	//中断模式
-	EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;		//双边沿模式，检测更稳定，次数需/2
+	EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;		//双边沿模式，上升沿和下降沿都有效，检测更稳定，次数需/2
 
 	EXTI_Init(&EXTI_InitStruct);
 	
@@ -47,13 +47,13 @@ void EXTI15_10_IRQHandler(){	//处理EXTI10-15端口的中断函数，无参无�
 	if (EXTI_GetITStatus(EXTI_Line14) == SET)	
 	{
 		cnt++;
-		Delay_ms(20);	//消抖，检测更稳定，防止一次多遍计数
+		
 		//很重要！！复位中断标志，防止一直重复触发中断
 		EXTI_ClearITPendingBit(EXTI_Line14);
 	}
 }
 
-uint16_t GetCnt(){
-	return cnt;
+uint16_t IS_GetCnt(){
+	return cnt/2;		//双边沿模式，次数需除2
 }
 
