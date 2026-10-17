@@ -21,10 +21,13 @@ OLED_Init();
 		}
 		
 		OLED_ShowString(2, 1, "Running");
-		Delay_ms(200);
+		Delay_ms(100);
 		OLED_ShowString(2, 1, "       ");
-		Delay_ms(200);
-		
+		Delay_ms(100);
+		//进入睡眠模式，使用中断可唤醒（WFE使用事件唤醒），CPU断电，减少耗电。
+		//无需其他配置，可配置SLEEPONEXIT设置子模式，默认模式0
+
+		__WFI();
 	}
 
 	return 0;
