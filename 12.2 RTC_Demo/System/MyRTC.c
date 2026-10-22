@@ -70,12 +70,9 @@ void MyRTC_SetTime(struct tm* mytime){
 	mytime->tm_year -= 1900;		// 年份偏移：tm_year为相对于1900的年数
 	mytime->tm_mon -= 1;			// 月份偏移：tm_mon范围0~11
 	
-	// 手动将北京时间转换为UTC时间（减8小时）
-	// 嵌入式环境无时区配置，mktime按UTC计算，因此先转UTC再求时间戳
-	mytime->tm_hour -= 8;
-	
 	// 转换为UTC时间戳，写入RTC 32位计数器
-	RTC_SetCounter(mktime(mytime));
+	// 手动将北京时间转换为UTC时间（减8小时）
+	RTC_SetCounter(mktime(mytime) - 28800);
 	RTC_WaitForLastTask();		// 等待写入操作硬件执行完毕
 }
 

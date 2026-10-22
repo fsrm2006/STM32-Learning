@@ -2,6 +2,6 @@
 #define __IS_H
 
 void IS_Init();
-uint16_t GetCnt();
+uint16_t IS_GetCnt();
 
 #endif
