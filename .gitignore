@@ -1,4 +1,4 @@
-# Keil MDK 编译生成文件
+# Keil MDK 编译输出 & 本地配置
 *.uvopt
 *.uvoptx
 *.bak
@@ -17,11 +17,22 @@
 *.lnp
 *.htm
 *.tra
-# 编译输出文件夹
+*.i
+
+# Keil 输出目录
 Objects/
 Listings/
 RTE/
-# 系统缓存
-.DS_Store
+
+# Keil 本地历史缓存
 __history/
-*.i
+
+# STM32CubeMX 临时文件
+.mxproject
+.cproject
+.project
+
+
+# 系统垃圾
+.DS_Store
+Thumbs.db
