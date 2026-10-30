@@ -1,23 +1,30 @@
-#include "stm32f10x.h"
+#include "stm32f1xx_hal.h"
 #include "OLED_Font.h"
 
 /*引脚配置*/
-#define OLED_W_SCL(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_8, (BitAction)(x))
-#define OLED_W_SDA(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_9, (BitAction)(x))
+#define OLED_W_SCL(x)		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, (GPIO_PinState)(x))
+#define OLED_W_SDA(x)		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, (GPIO_PinState)(x))
 
 /*引脚初始化*/
 void OLED_I2C_Init(void)
 {
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    // 开启GPIOB外设时钟，HAL库写法
+	__HAL_RCC_GPIOB_CLK_ENABLE();
 	
+	// 定义GPIO初始化结构体
 	GPIO_InitTypeDef GPIO_InitStructure;
- 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	// 配置模式：开漏输出，适合I2C，支持线与
+ 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_OD;
+	// 输出速度：高速
+	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
+	// 指定引脚PB8（SCL）
+	GPIO_InitStructure.Pin = GPIO_PIN_8;
+ 	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
+	// 修改引脚为PB9（SDA），复用同一个结构体配置
+	GPIO_InitStructure.Pin = GPIO_PIN_9;
+ 	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
+	// I2C空闲状态：SCL、SDA拉高
 	OLED_W_SCL(1);
 	OLED_W_SDA(1);
 }
