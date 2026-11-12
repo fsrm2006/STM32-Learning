@@ -11,6 +11,7 @@ void OLED_ShowHexNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Leng
 void OLED_ShowBinNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length);
 void OLED_ShowDecimalNum(uint8_t Line, uint8_t Column, float Number, uint8_t Round);
 void OLED_CleanPartial(uint8_t Line, uint8_t Column, uint8_t Length);
+void OLED_ShowNums(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length);
 uint8_t Get_NumLength(int32_t num);
 
 #endif

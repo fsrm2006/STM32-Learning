@@ -1,5 +1,6 @@
 #include<stm32f1xx_hal.h>
-#include "spi.h"
+//#include "spi.h"
+#ifdef __SPI_H__
 // 硬件SPI底层驱动（SPI1，模式0：CPOL=0、CPHA=1Edge，高位先行）
 // 引脚映射：PA4=SS片选（普通GPIO软件控制，非硬件NSS）、PA5=SCK时钟、PA6=MISO主机输入、PA7=MOSI主机输出
 
@@ -31,3 +32,4 @@ uint8_t MySPI_SwapByte(uint8_t TxData){
 	HAL_SPI_TransmitReceive(&hspi1, &TxData, &Rx_Data, 1, 100);	
 	return Rx_Data;
 }
+#endif

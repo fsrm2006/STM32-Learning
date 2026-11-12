@@ -216,6 +216,24 @@ void OLED_ShowNum(uint8_t Line, uint8_t Column, uint32_t Number)
 }
 
 /**
+  * @brief  OLED显示数字（十进制，正数）
+  * @param  Line 起始行位置，范围：1~4
+  * @param  Column 起始列位置，范围：1~16
+  * @param  Number 要显示的数字，范围：0~4294967295
+  * @param  Length 要显示数字的长度，范围：1~10
+  * @retval 无
+  */
+void OLED_ShowNums(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length)
+{
+	uint8_t i;
+	for (i = 0; i < Length; i++)							
+	{
+		OLED_ShowChar(Line, Column + i, Number / OLED_Pow(10, Length - i - 1) % 10 + '0');
+	}
+
+}
+
+/**
   * @brief  OLED显示数字（十进制，带符号数）
   * @param  Line 起始行位置，范围：1~4
   * @param  Column 起始列位置，范围：1~16
